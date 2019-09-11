@@ -8,9 +8,11 @@ September 10, 2019
 #include <cstring>
 #include <string>
 
-int vowelFinder(char* cstring);
+int vowels(char* cstring);
 
 int main() {
+	//input file
+
 	//test input string to verify vowelFinder works
 	std::string str;
 	std::getline(std::cin, str); //make sure to grab incase multiple words/spaces present
@@ -33,11 +35,11 @@ int main() {
 
 	//call vowelFinder after prepping has been completed
 	std::cout << std::endl;
-	std::cout << "Vowel amount: " << vowelFinder(cstr);
+	std::cout << "Vowel amount: " << vowels(cstr);
 }
 
 //Recursively adds up vowel amount in given cstring
-int vowelFinder(char* cstring)
+int vowels(char* cstring)
 {
 	//if cstring is empty stop recursion
 	if (cstring[0] == NULL)
@@ -52,13 +54,13 @@ int vowelFinder(char* cstring)
 		{
 			//std::cout << "cstring[0] = " << cstring[0] << std::endl; //prints out front character to make sure its a vowel
 			memmove(&cstring[0], &cstring[1], strlen(cstring)); //remove front character after it is tested
-			return 1 + vowelFinder(cstring);
+			return 1 + vowels(cstring);
 		}
 		else
 		{
 			//std::cout << "cstring[0] = " << cstring[0] << std::endl; //prints out front character to make sure its not a vowel
 			memmove(&cstring[0], &cstring[1], strlen(cstring)); //remove front character after it is tested
-			return 0 + vowelFinder(cstring);
+			return 0 + vowels(cstring);
 		}
 	}
 }
