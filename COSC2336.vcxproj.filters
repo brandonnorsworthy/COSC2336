@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Norsworthy_Brandon_Module1Assignment1\source.cpp">
+    <Text Include="input.txt">
       <Filter>Source Files</Filter>
-    </ClCompile>
+    </Text>
+    <Text Include="output.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Norsworthy_Brandon_Module1Assignment1\output.txt">
+    <ClCompile Include="source.cpp">
       <Filter>Source Files</Filter>
-    </Text>
-    <Text Include="Norsworthy_Brandon_Module1Assignment1\input.txt">
-      <Filter>Source Files</Filter>
-    </Text>
+    </ClCompile>
   </ItemGroup>
 </Project>
