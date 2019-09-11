@@ -13,17 +13,22 @@ int vowelFinder(char* cstring);
 int main() {
 	//test input string to verify vowelFinder works
 	std::string str;
-	std::cin >> str;
+	std::getline(std::cin, str); //make sure to grab incase multiple words/spaces present
 
 	//copies over str int a cstring to send off to vowelFinder
 	char* cstr = new char[str.length() + 1];
 	strcpy_s(cstr, str.length() + 1, str.c_str());
 
-	//make all letters to upper so i can type less
+	//loops through cstr to test for spaces and convert to uppercase
+	char c;
 	for (int i = 0; i < strlen(cstr); i++)
 	{
-		cstr[i] = toupper(cstr[i]);
-		//std::cout << cstr[i] << ", "; //prints out characters to make sure they are uppercase
+		c = cstr[i];
+		if (!isspace(c))
+		{
+			cstr[i] = toupper(cstr[i]);
+			//std::cout<< cstr[i] << ", "; //prints out characters to make sure they are uppercase
+		}
 	}
 
 	//call vowelFinder after prepping has been completed
