@@ -12,30 +12,50 @@ int vowels(char* cstring);
 
 int main() {
 	//input file
+	std::ifstream iFile("input.txt");
+	std::ofstream oFile("output.txt");
 
 	//test input string to verify vowelFinder works
 	std::string str;
-	std::getline(std::cin, str); //make sure to grab incase multiple words/spaces present
+	int vowelAmount = 0;
 
-	//copies over str int a cstring to send off to vowelFinder
-	char* cstr = new char[str.length() + 1];
-	strcpy_s(cstr, str.length() + 1, str.c_str());
-
-	//loops through cstr to test for spaces and convert to uppercase
-	char c;
-	for (int i = 0; i < strlen(cstr); i++)
+	while (std::getline(iFile, str))
 	{
-		c = cstr[i];
-		if (!isspace(c))
-		{
-			cstr[i] = toupper(cstr[i]);
-			//std::cout<< cstr[i] << ", "; //prints out characters to make sure they are uppercase
-		}
-	}
+		//read input std::cin tests input iFile tests txt
+		//std::getline(iFile, str); //make sure to grab incase multiple words/spaces present
 
-	//call vowelFinder after prepping has been completed
-	std::cout << std::endl;
-	std::cout << "Vowel amount: " << vowels(cstr);
+		//copies over str int a cstring to send off to vowelFinder
+		char* cstr = new char[str.length() + 1];
+		strcpy_s(cstr, str.length() + 1, str.c_str());
+
+		//loops through cstr to test for spaces and convert to uppercase
+		char c;
+		for (int i = 0; i < strlen(cstr); i++)
+		{
+			c = cstr[i];
+			if (isalpha(c))
+			{
+				if (!isspace(c))
+				{
+					cstr[i] = toupper(cstr[i]);
+					//std::cout<< cstr[i] << ", "; //prints out characters to make sure they are uppercase
+				}
+			}
+		}
+		vowelAmount += vowels(cstr);
+	}
+	iFile.close();
+
+	char vowelAmountC[10];
+	_itoa_s(vowelAmount, vowelAmountC, 10);
+	std::cout << "Vowel amount: " << vowelAmountC;
+	if (oFile)
+	{
+		oFile << vowelAmountC;
+	}
+	oFile.close();
+
+	return 0;
 }
 
 //Recursively adds up vowel amount in given cstring
